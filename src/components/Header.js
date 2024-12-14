@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { FaHome, FaCarCrash } from 'react-icons/fa'; // Using FaCar as a logo icon
+import { FaHome, FaCarCrash } from 'react-icons/fa'; // Using FaCarCrash icon
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import '../styles/Header.css';
 
 function Header() {
+  const navigate = useNavigate(); // Initialize navigate function
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +27,11 @@ function Header() {
         <a href="/" className="link">
           <FaHome className="icon" /> Home
         </a>
-        <a href="/test-collision" className="link">
+        <a
+          href="#"
+          className="link"
+          onClick={() => navigate("/test-collision")} // Use navigate to redirect
+        >
           <FaCarCrash className="icon" /> Test Collision
         </a>
       </div>
