@@ -168,7 +168,7 @@ function Home() {
           muted
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         >
-          <source src={require("../assets/video.mp4")} type="video/mp4" />
+          <source src="../assets/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>
