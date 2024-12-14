@@ -83,7 +83,7 @@ const TestedVideos = () => {
 
         {/* Image Card */}
         <div style={styles.resourceCard}>
-          <img src={TestedPhoto1} alt="Test Photo 1" style={styles.media} />
+          <img src={TestedPhoto1} alt="Test Photo1" style={styles.media} />
           <h3>Test Model Photo</h3>
         </div>
       </div>
