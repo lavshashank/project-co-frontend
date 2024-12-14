@@ -1,19 +1,9 @@
 import React, { useState } from "react";
 import TestedVideos from "./Testedvideo";
-import {
-  FaCarCrash,
-  FaShieldAlt,
-  FaCogs,
-  FaRobot,
-  FaMagic,
-  FaChartLine,
-  FaMicrochip,
-  FaLightbulb,
-  FaRoad,
-  FaFileAlt,
-} from "react-icons/fa";
+import { FaCarCrash, FaShieldAlt, FaCogs, FaRobot, FaMagic, FaChartLine, FaMicrochip, FaLightbulb, FaRoad, FaFileAlt } from "react-icons/fa";
 import ChatSupport from "./ChatSupport";
 import "./Report";
+import { useNavigate } from 'react-router-dom';
 
 const styles = {
   container: {
@@ -121,7 +111,7 @@ const styles = {
     cursor: "pointer",
     fontSize: "16px",
     textTransform: "uppercase",
-    transition: "all 0.5s ease-in-out", // Smooth transition for all properties
+    transition: "all 0.5s ease-in-out",
     boxShadow: "0 0 15px #00f3ff",
     marginBottom: "20px",
     alignSelf: "center",
@@ -133,14 +123,13 @@ const styles = {
     },
   },
 
-  // For resourceCard
   resourceCard: {
     background: "#0e2433",
     padding: "30px",
     borderRadius: "15px",
     textAlign: "center",
     boxShadow: "0 4px 15px rgba(0, 255, 255, 0.2)",
-    transition: "all 0.5s ease-in-out", // Ensure smooth transition
+    transition: "all 0.5s ease-in-out",
     margin: "15px",
     flex: "1 1 calc(30% - 30px)",
   },
@@ -154,6 +143,7 @@ const styles = {
 
 function Home() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const navigate = useNavigate(); // Import and define navigate function
 
   const toggleSection = () => {
     setIsExpanded(!isExpanded);
@@ -161,7 +151,6 @@ function Home() {
 
   return (
     <div style={styles.container}>
-      {/* Main Screen */}
       <section style={styles.mainScreen}>
         <video
           autoPlay
@@ -173,7 +162,6 @@ function Home() {
         </video>
       </section>
 
-      {/* Features Section */}
       <section style={styles.section}>
         <h2 style={styles.sectionTitle}>Features</h2>
         <button
@@ -265,60 +253,42 @@ function Home() {
           </div>
         )}
       </section>
-      {/* 3D Animation Section */}
-      <section style={styles.section}>
-        <h2 style={styles.sectionTitle}>Animation</h2>
-        <video
-          autoPlay
-          muted
-          loop
-          style={{ width: "80%", height: "60%", objectFit: "cover" }}
-        >
-          <source src={require("../assets/animation.mp4")} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </section>
 
-      {/* Chat Support */}
       <ChatSupport />
       <TestedVideos />
-      {/* Resources Section */}
+
       <section style={styles.section}>
         <h2 style={styles.sectionTitle}>Resources</h2>
         <div style={styles.resourceContainer}>
-          {/* Documentation Card */}
           <div style={{ ...styles.resourceCard, ...styles.resourceCardHover }}>
             <FaFileAlt style={styles.resourceIcon} />
             <h3>Documentation</h3>
             <p>Step-by-step guides to setup and configure the system.</p>
-            <a href="/report" style={styles.link}>
+            <a href="#" style={styles.link} onClick={() => navigate("/report")}>
               Learn More
             </a>
           </div>
 
-          {/* AI Models Card */}
           <div style={{ ...styles.resourceCard, ...styles.resourceCardHover }}>
             <FaRobot style={styles.resourceIcon} />
             <h3>AI Models</h3>
             <p>Explore the pre-trained AI models used in this project.</p>
-            <a href="/models" style={styles.link}>
+            <a href="#" style={styles.link} onClick={() => navigate("/models")}>
               Explore Models
             </a>
           </div>
 
-          {/* System Features Card */}
           <div style={{ ...styles.resourceCard, ...styles.resourceCardHover }}>
             <FaCogs style={styles.resourceIcon} />
             <h3>System Features</h3>
             <p>Learn more about the features and capabilities of the system.</p>
-            <a href="/features" style={styles.link}>
+            <a href="#" style={styles.link} onClick={() => navigate("/features")}>
               Discover Features
             </a>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer style={styles.footer}>
         <p>Contact Us: support@fcw-system.com | +1-234-567-8901</p>
         <p>© 2024 Forward Collision Warning System. All Rights Reserved.</p>
