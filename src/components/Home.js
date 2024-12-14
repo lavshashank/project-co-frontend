@@ -168,7 +168,7 @@ function Home() {
           muted
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         >
-          <source src="../assets/video.mp4" type="video/mp4" />
+          <source src={require("../assets/video.mp4")} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>
@@ -274,10 +274,7 @@ function Home() {
           loop
           style={{ width: "80%", height: "60%", objectFit: "cover" }}
         >
-          <source
-            src="https://drive.google.com/uc?export=download&id=1IrPEGvspAcgLsmeJ_tF6T3FA6VDYZ0T8"
-            type="video/mp4"
-          />
+          <source src={require("../assets/animation.mp4")} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </section>
