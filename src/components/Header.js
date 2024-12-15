@@ -27,7 +27,7 @@ function Header() {
         <a href="/" className="link">
           <FaHome className="icon" /> Home
         </a>
-        <a
+        <a href=''
           className="link"
           onClick={() => navigate("/test-collision")} // Use navigate to redirect
         >
