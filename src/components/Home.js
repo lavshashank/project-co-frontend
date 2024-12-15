@@ -264,7 +264,7 @@ function Home() {
             <FaFileAlt style={styles.resourceIcon} />
             <h3>Documentation</h3>
             <p>Step-by-step guides to setup and configure the system.</p>
-            <a style={styles.link} onClick={() => navigate("/report")}>
+            <a href='' style={styles.link} onClick={() => navigate("/report")}>
               Learn More
             </a>
           </div>
@@ -273,7 +273,7 @@ function Home() {
             <FaRobot style={styles.resourceIcon} />
             <h3>AI Models</h3>
             <p>Explore the pre-trained AI models used in this project.</p>
-            <a style={styles.link} onClick={() => navigate("/models")}>
+            <a href='' style={styles.link} onClick={() => navigate("/models")}>
               Explore Models
             </a>
           </div>
@@ -282,7 +282,7 @@ function Home() {
             <FaCogs style={styles.resourceIcon} />
             <h3>System Features</h3>
             <p>Learn more about the features and capabilities of the system.</p>
-            <a style={styles.link} onClick={() => navigate("/features")}>
+            <a href='' style={styles.link} onClick={() => navigate("/features")}>
               Discover Features
             </a>
           </div>
