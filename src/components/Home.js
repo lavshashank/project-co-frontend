@@ -139,6 +139,24 @@ const styles = {
       boxShadow: "0 0 20px #00f3ff",
     },
   },
+  linkButton: {
+    background: "linear-gradient(to right, #00f3ff, #0066ff)",
+    color: "#fff",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "25px",
+    cursor: "pointer",
+    fontSize: "16px",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    boxShadow: "0 0 10px #00f3ff",
+    marginTop: "10px",
+  },
+  linkButtonHover: {
+    "&:hover": {
+      transform: "scale(1.05)",
+      boxShadow: "0 0 20px #00f3ff",
+    },
+   },
 };
 
 function Home() {
@@ -264,27 +282,36 @@ function Home() {
             <FaFileAlt style={styles.resourceIcon} />
             <h3>Documentation</h3>
             <p>Step-by-step guides to setup and configure the system.</p>
-            <a href='' style={styles.link} onClick={() => navigate("/report")}>
+            <button
+              style={{ ...styles.linkButton, ...styles.linkButtonHover }}
+              onClick={() => navigate("/report")}
+            >
               Learn More
-            </a>
+            </button>
           </div>
 
           <div style={{ ...styles.resourceCard, ...styles.resourceCardHover }}>
             <FaRobot style={styles.resourceIcon} />
             <h3>AI Models</h3>
             <p>Explore the pre-trained AI models used in this project.</p>
-            <a href='' style={styles.link} onClick={() => navigate("/models")}>
+            <button
+              style={{ ...styles.linkButton, ...styles.linkButtonHover }}
+              onClick={() => navigate("/models")}
+            >
               Explore Models
-            </a>
+            </button>
           </div>
 
           <div style={{ ...styles.resourceCard, ...styles.resourceCardHover }}>
             <FaCogs style={styles.resourceIcon} />
             <h3>System Features</h3>
             <p>Learn more about the features and capabilities of the system.</p>
-            <a href='' style={styles.link} onClick={() => navigate("/features")}>
+            <button
+              style={{ ...styles.linkButton, ...styles.linkButtonHover }}
+              onClick={() => navigate("/features")}
+            >
               Discover Features
-            </a>
+            </button>
           </div>
         </div>
       </section>
