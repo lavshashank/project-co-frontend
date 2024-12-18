@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';  // Importing Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";  // Ensure to import Bootstrap CSS here
 import Sample1 from "../assets/Sample1.png";
 import Sample2 from "../assets/Sample2.png";
 import Sample3 from "../assets/Sample3.png";
@@ -44,12 +46,16 @@ function TestCollision() {
   const [streamUrl, setStreamUrl] = useState("");
   const [collisionWarning, setCollisionWarning] = useState(null);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Loading state
+
+  const apiBaseUrl = `http://13.233.102.212:5000/`; // Update API base URL
 
   const handleFileChange = (e) => {
     setVideoFile(e.target.files[0]);
     setStreamUrl("");
     setError("");
     setCollisionWarning(null);
+    setIsLoading(false); // Reset loading state
   };
 
   const handleUpload = async () => {
@@ -58,21 +64,23 @@ function TestCollision() {
       return;
     }
 
+    setIsLoading(true); // Set loading state
+
     const formData = new FormData();
     formData.append("video", videoFile);
 
     try {
-      const response = await fetch("http://localhost:5000/upload", {
+      const response = await fetch(`${apiBaseUrl}/upload`, {
         method: "POST",
         body: formData,
       });
 
       if (response.ok) {
         const data = await response.json();
-        setStreamUrl(`http://localhost:5000/video_feed/${data.file_path}`);
+        setStreamUrl(`${apiBaseUrl}/video_feed/${data.file_path}`);
 
         const eventSource = new EventSource(
-          `http://localhost:5000/events/${data.file_path}`
+          `${apiBaseUrl}/events/${data.file_path}`
         );
 
         eventSource.onmessage = (event) => {
@@ -85,13 +93,14 @@ function TestCollision() {
           eventSource.close();
         };
 
-        return () => eventSource.close();
       } else {
         const errorData = await response.json();
         setError(errorData.error || "An error occurred.");
       }
     } catch (err) {
       setError("Failed to connect to the server.");
+    } finally {
+      setIsLoading(false); // Reset loading state
     }
   };
 
@@ -113,6 +122,7 @@ function TestCollision() {
         </button>
       </div>
       {error && <p style={theme.error}>{error}</p>}
+      {isLoading && <p style={theme.loading}>Video is loading...</p>}
       {streamUrl && (
         <div>
           <div>
@@ -215,6 +225,11 @@ const theme = {
     marginTop: "10px",
     fontWeight: "bold",
   },
+  loading: {
+    color: "#00f3ff",
+    marginTop: "10px",
+    fontWeight: "bold",
+  },
   videoContainer: {
     marginTop: "20px",
     textAlign: "center",
@@ -272,12 +287,10 @@ const theme = {
     backgroundColor: "#28a745",
     color: "white",
     textDecoration: "none",
-    borderRadius: "6px",
-    textAlign: "center",
-    fontSize: "14px",
+    borderRadius: "5px",
     fontWeight: "bold",
-    boxShadow: "0 4px 8px rgba(40, 167, 69, 0.3)",
-    transition: "transform 0.2s ease, box-shadow 0.3s ease",
+    transition: "background-color 0.3s ease-in-out",
+    textAlign: "center",
   },
 };
 
